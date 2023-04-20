@@ -9,7 +9,7 @@ const NewUser=(props)=>{
     {props.updateUser.length <= 0 ? <div>
       <h2>No Data Here</h2>
     </div>:
-    <div className={`container` ${style.cont}}>
+    <div className={`container${style.cont}`}>
         <h2>User Lists</h2>
       <ul className={style.ul}>
       {

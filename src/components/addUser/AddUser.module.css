@@ -1,0 +1,22 @@
+.addUser form {
+  width: 100%;
+  display: grid;
+  justify-content: space-around;
+  align-items: centre;
+  margin: 2rem auto;
+  padding: 0.5rem auto;
+  border-radius: 2rem;
+  background: #aaa;
+}
+
+.addUser form lable {
+  margin: 0.8rem 0rem;
+  font-weight: bold;
+}
+
+.addUser form input {
+  width: 100%;
+  border: 1px solid #ccc;
+  padding: 0.15rem;
+  margin-bottom: 0.5rem;
+}

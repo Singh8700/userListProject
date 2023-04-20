@@ -1,0 +1,33 @@
+.ul{
+  width: 100%;
+  background: var(--color-bg);
+  padding: 2rem 1.5rem;
+  border-radius: 2rem;
+  list-style: none;
+  li{
+    color:#fff;
+    margin: 0.8rem auto;
+  }
+}
+.btn{
+  text-align: center;
+  margin: 1.2rem auto;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-radius: 0.7rem;
+  position: relative;
+  background: transparent;
+  border-color: #fff;
+  left:50%;
+  transform: translateX(-50%);
+  transition: 0.5s;
+  animation: oneTime 0.5s ease 1;
+}
+.btn:hover{
+    background: #999;
+    box-shadow: 2px 2px 5px #aaa;
+  }
+@keyframes oneTime{
+  from{margin-left: -100%;}
+  to{margin-left: 0%;}
+}

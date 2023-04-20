@@ -1,5 +1,5 @@
 {
-  "homepage":"https://singh8700.github.io/uerlistproject/",
+  "homepage": "https://singh8700.github.io/userListProject/",
   "name": "new",
   "private": true,
   "version": "0.0.0",
@@ -7,8 +7,8 @@
   "scripts": {
     "start": "vite",
     "dev": "vite",
-    "predeploy" : "vite build",
-    "deploy" : "gh-pages -d build",
+    "predeploy": "vite build",
+    "deploy": "gh-pages -d dist",
     "build": "vite build",
     "preview": "vite preview"
   },

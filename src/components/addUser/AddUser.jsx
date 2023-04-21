@@ -37,6 +37,7 @@ const onPincodeChange=(event)=>{
 const onUpdatehandler=(event)=>{
   event.preventDefault();
   
+  props.showAlert("warning","⏫ Update both fields ")
 
   if(names.length == 0 || names.trim().length == 0){
       return props.showAlert("warning","⚠️Title is Empty ✍️:) ")

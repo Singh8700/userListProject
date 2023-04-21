@@ -9,19 +9,32 @@ const NewUser=(props)=>{
     {props.updateUser.length <= 0 ? <div>
       <h2>No Data Here</h2>
     </div>:
-    <div className={`container${style.cont}`}>
+    <div className={`${style.cont}`}>
         <h2>User Lists</h2>
       <ul className={style.ul}>
       {
         props.updateUser.map((item)=>{
           return (
+          <>
           <li key={item.id}>
-          <h4>User Name is : {item.names}</h4>
-          <h4>Pincode is : {item.pincodes} </h4><br/>
-          <h6>{item.tim}</h6>
+          <h4 className={style.h4}>
+          Hi, {item.names}
+          </h4>
+          <h4>
+          <span className={style.span}>
+              Notes
+              <hr/>
+          </span>
+          <br/>
+          <br/> {item.userM} </h4><br/>
+          <h6 className={style.time}>
+            {item.dates}
+          </h6>
+          <h6 className={style.time}>{item.times}</h6>
             <button type="submit" onClick={()=>props.onUserRemove(item.id)} className={style.btn}> Delete User
             </button>
           </li>
+          </>
           )
         })
      }

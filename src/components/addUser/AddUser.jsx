@@ -5,7 +5,7 @@ import NewUser from "../newUser/NewUser";
 
 const getUserData = ()=>{
   let list = localStorage.getItem("userDetails")
- // console.log(list)
+ // check user data Store in locale storage
   if(list){
     return JSON.parse(localStorage.getItem("userDetails"))
     }
@@ -15,67 +15,87 @@ const getUserData = ()=>{
 }
 const AddUser=(props)=>{
   const [names, setNames] = useState('')
-  const [pincodes, setPincodes] = useState('')
+  const [userM, setUserM] = useState('')
   const [getName,setGetName]=useState(getUserData())
-//  console.log("name list is ",nameList)
- // console.log("yy",localStorage.getItem(names),names)
- 
-  
- // console.log("hello list ",typeof(getName))
+//user name get function 👇
   const onNameChange=(event)=>{
-  //  console.log(event.target.value)
+  //  user name set in useState
     setNames(event.target.value);
     
   }
-  
+     // user Msg get function 👇
   const onPincodeChange=(event)=>{
-   // console.log(event.target.value)
-    setPincodes(event.target.value);
-    //localStorage.setItem("pincode",pincodes)
+  //  user Msg set in useState
+    setUserM(event.target.value);
+
   }
   
   const onSubmitHandler=(event)=>{
-    //events.perventDefault()
+  // form reload problem solve
     event.preventDefault();
     
-    if(names.trim().length == 0 && pincodes.length == 0){
+    if(names.trim().length == 0 && userM.trim().length == 0){
       return props.showAlert("alert","🙅‍♂️ please enter all field :) ")
     }
+    //check name is not a blank
     if(names.trim().length == 0){
-     // console.log('enter valid name 0leas')
       return props.showAlert("warning","⚠️ plese enter the Name :) ")
     }
-    if(pincodes.length <= 5 || pincodes.length >= 7){
+    //check Msg in not blank
+    if(userM.trim().length == 0){
       return props.showAlert("warning","⚠️ please enter right pin code :) ")
     }
-    const time = new Date().toString();
-    console.log("time is ", time)
+    //date function
+const date = new Date();
+ const dates = date.toDateString();
+    //hours method
+    const hh = (date.getHours() < 10 ? '0' : '') +
+            date.getHours();
+     //minutes method 
+    const mm = (date.getMinutes() < 10 ? '0' : '') +
+            date.getMinutes();
+    // AM & PM method 
+    const newformat = hh >= 12 ? 'PM' : 'AM';
+  //set seconds method 
+    const ss = new Date().getSeconds();
+  //time set method 
+    const times = `${hh}:${mm}:${ss} ${newformat}`;
+    //console.log("time is ", times)
+  // user object create method 
    const lists = {
    names,
-   pincodes,
+   userM,
   id:Math.random().toString(),
-  tim:time
+  dates:dates,
+  times:times
  }
+ //user object get method 
  setGetName([...getName,lists])
-   // setPincodeGet(b.getItem("pincode"))
+//user Details send method 
    props.userList(getName)
+//alert method
    props.showAlert("success","🏆 Your Data is successful Add")
+   //after send clear method 
     setNames('')
-    setPincodes('')
+    setUserM('')
   }
   useEffect(()=>{
+    //user data set method in localStorage
    localStorage.setItem("userDetails",JSON.stringify(getName))
-   
-    //localStorage.setItem("pincode", JSON.stringify(pincodes))
+ 
   },[getName])
+  
+  //All user remove method 
   const onRenoveHandler=()=>{
   setGetName([])
 }
+//only one user remove method
 const onUserRemove=(id)=>{
- // console.log("id is ",id)
+ //target user get method 
   const filterData = getName.filter((element, index)=>{
     return element.id !== id
   })
+  //target user remove method
   setGetName(filterData)
 }
   return(
@@ -86,10 +106,11 @@ const onUserRemove=(id)=>{
          Name
         </lable>
           <input type="text" value={names} id="name" onChange={onNameChange}/>
-        <lable htmlFor="pincode">
-          Pincode
+        <lable htmlFor="notes">
+          Notes
         </lable>
-          <input type="number" value={pincodes} id="pincode" onChange={onPincodeChange}/>
+          <textarea type="number" value={userM} id="pincode" onChange={onPincodeChange} rows="8" cols="30">
+          </textarea>
          <button type="submit" className={`btn btn-primary`}>
           Add User
          </button>

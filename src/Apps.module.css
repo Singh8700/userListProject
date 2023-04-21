@@ -1,0 +1,12 @@
+.container {
+  animation: zoomIn 0.2s linear 1;
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}

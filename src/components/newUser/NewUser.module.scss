@@ -25,14 +25,14 @@
     transition: all 0.2s linear;
     h4{
       
-      margin: 0.8rem 0;
-      font-size: 1rem;
+      margin: 0.11rem 0;
+      font-size: 1.5rem;
       text-shadow: none;
       font-weight: 900;
     }
     .h4{
       text-align: center;
-      font-size: 1.6rem;
+      font-size: 2rem;
       
     }
     .span{
@@ -40,7 +40,13 @@
       left:50%;
       transform: translateX(-50%);
       font-size: 1.3rem;
+      margin: 0;
+      color:#aaa;
 
+    }
+   span i{
+      color:#999;
+      background: red;
     }
   }
   li:hover{
@@ -50,7 +56,10 @@
   }
 }
 .btn{
-  text-align: center;
+  display: flex;
+  justify-content: right;
+  align-items: right;
+  text-align: right;
   margin: 1.2rem auto;
   padding: 0.5rem;
   font-size: 1rem;
@@ -62,6 +71,9 @@
   transform: translateX(-50%);
   transition: 0.5s;
   animation: oneTime 0.5s ease 1;
+  span{
+    margin-left: 1.5rem;
+  }
 }
 .btn:hover{
     background: #999;
@@ -72,8 +84,9 @@
   to{margin-left: 0%;}
 }
 .time{
-  font-size: 0.5rem;
+  font-size: 0.8rem;
   font-weight: 1000;
+  color:#ccc;
 }
 
 

@@ -1,16 +1,16 @@
 
 import style from "./NewUser.module.css"
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 const NewUser=(props)=>{
 
 
   return (
     <>
     {props.updateUser.length <= 0 ? <div>
-      <h2>No Data Here</h2>
+      <h2>Empty Notes Box</h2>
     </div>:
     <div className={`${style.cont}`}>
-        <h2>User Lists</h2>
+        <h2>Notes</h2>
       <ul className={style.ul}>
       {
         props.updateUser.map((item)=>{
@@ -25,14 +25,20 @@ const NewUser=(props)=>{
               Notes
               <hr/>
           </span>
-          <br/>
           <br/> {item.userM} </h4><br/>
           <h6 className={style.time}>
             {item.dates}
           </h6>
           <h6 className={style.time}>{item.times}</h6>
-            <button type="submit" onClick={()=>props.onUserRemove(item.id)} className={style.btn}> Delete User
-            </button>
+      <span className={style.btn}>
+       <span onClick={()=>props.onUserUpdate(item.id)}>
+      <i className="fas fa-edit fa-lg"></i>
+        </span>
+        <span onClick={()=>props.onUserRemove(item.id)} >
+       <i className="fa-solid fa-trash fa-lg">
+          </i>
+          </span>
+        </span>
           </li>
           </>
           )

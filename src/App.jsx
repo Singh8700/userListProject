@@ -20,12 +20,12 @@ function App() {
   }
   const data=(sname)=>{
     return setUserList([...sname,sname])
-
+    
   }
-  
+  console.log(userList);
   return (
     <div className={style.container}>
-    <h1>Add User</h1>
+    <h1>Notes Manegement</h1>
     <Alert msg={alerts} bg={sta}/>
     <AddUser showAlert={showAlert} userList={data}/>
   

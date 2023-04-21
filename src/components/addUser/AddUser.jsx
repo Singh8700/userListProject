@@ -13,37 +13,109 @@ const getUserData = ()=>{
       return []
     }
 }
+
 const AddUser=(props)=>{
   const [names, setNames] = useState('')
   const [userM, setUserM] = useState('')
   const [getName,setGetName]=useState(getUserData())
+  const [updates ,setUpdates]=useState(false);
 //user name get function 👇
   const onNameChange=(event)=>{
   //  user name set in useState
     setNames(event.target.value);
     
   }
-     // user Msg get function 👇
-  const onPincodeChange=(event)=>{
+  
+// user Msg get function 👇
+const onPincodeChange=(event)=>{
   //  user Msg set in useState
     setUserM(event.target.value);
 
   }
   
+  //user Details upadte method 
+const onUpdatehandler=(event)=>{
+  event.preventDefault();
+  
+
+  if(names.length == 0 || names.trim().length == 0){
+      return props.showAlert("warning","⚠️Title is Empty ✍️:) ")
+    }
+  //check not a blank method
+  if(userM.length == 0 || userM.trim().length == 0){
+      return props.showAlert("warning","⚠️ Massage are not Updated ✍️:) ")
+    }
+  const date = new Date();
+ const dates = date.toDateString();
+    //hours method
+    const hh = (date.getHours() < 10 ? '0' : '') +
+            date.getHours();
+     //minutes method 
+    const mm = (date.getMinutes() < 10 ? '0' : '') +
+            date.getMinutes();
+    // AM & PM method 
+    const newformat = hh >= 12 ? 'PM' : 'AM';
+  //set seconds method 
+    const ss = new Date().getSeconds();
+  //time set method 
+    const times = `${hh}:${mm}:${ss} ${newformat}`;
+  const lists = {
+   names,
+   userM,
+   id:Math.random().toString(),
+  dates:dates,
+  times:times
+ }
+ //user object get method 
+ //console.log("list is",lists);
+ setGetName([...getName,lists])
+ props.showAlert("success","🏆 Your Data is successful Update 👏")
+ setUpdates(false)
+ setNames('')
+ setUserM('')
+ }
+ 
+ //user upadte method
+const onUserUpdate=(id)=>{
+  setUpdates(true)
+  const filterData = getName.filter((element,index)=>{
+    return element.id == id
+  })
+ console.log("data is ",...filterData)
+ const updateName = filterData.map((item)=>{
+   return item.names
+  })
+  const updateMsg = filterData.map((item)=>{
+   return item.userM
+  })
+  //console.log("your mame is",...name)
+ setNames(updateName)
+  setUserM(updateMsg)
+  const datas = getName.filter((element,index)=>{
+    return element.id !== id
+  })
+  console.log("iid id is",id)
+  setGetName(datas)
+ props.userList(getName)
+ 
+//user Details send method 
+ }
+
+ // console.log("yeh",name.trim())
   const onSubmitHandler=(event)=>{
   // form reload problem solve
     event.preventDefault();
     
-    if(names.trim().length == 0 && userM.trim().length == 0){
-      return props.showAlert("alert","🙅‍♂️ please enter all field :) ")
+    if(names.trim().length === 0 && userM.trim().length === 0){
+      return props.showAlert("alert","🙅‍♂️All fields are Mandatory :) ")
     }
     //check name is not a blank
-    if(names.trim().length == 0){
-      return props.showAlert("warning","⚠️ plese write your Name ✍️ :) ")
+    if(names.trim().length === 0){
+      return props.showAlert("warning","⚠️ Title is Empty ✍️ :) ")
     }
     //check Msg in not blank
     if(userM.trim().length == 0){
-      return props.showAlert("warning","⚠️ please write Your Massage ✍️:) ")
+      return props.showAlert("warning","⚠️ Massage box are Empty  ✍️:) ")
     }
     //date function
 const date = new Date();
@@ -85,10 +157,11 @@ const date = new Date();
  
   },[getName])
   
-  //All user remove method 
-  const onRenoveHandler=()=>{
+//All user remove method 
+const onRenoveHandler=()=>{
   setGetName([])
 }
+
 //only one user remove method
 const onUserRemove=(id)=>{
  //target user get method 
@@ -98,9 +171,26 @@ const onUserRemove=(id)=>{
   //target user remove method
   setGetName(filterData)
 }
+
+
   return(
     <>
     <div className={`container ${style.addUser}`}>
+    {(updates)?
+      <form onSubmit={onUpdatehandler}>
+        <lable htmlFor="name">
+         Title
+        </lable>
+          <input type="text" value={names} id="name" onChange={onNameChange}/>
+        <lable htmlFor="notes">
+          Notes
+        </lable>
+          <textarea type="number" value={userM} id="pincode" onChange={onPincodeChange} rows="8" cols="30">
+          </textarea>
+          <button type="submit" className={`btn btn-primary`}>
+          Update User
+         </button>
+        </form>:
       <form onSubmit={onSubmitHandler}>
         <lable htmlFor="name">
          Title
@@ -114,8 +204,8 @@ const onUserRemove=(id)=>{
          <button type="submit" className={`btn btn-primary`}>
           Add User
          </button>
-      </form>
-      <NewUser updateUser={getName} re={onRenoveHandler} onUserRemove={onUserRemove}/>
+      </form>}
+      <NewUser updateUser={getName} re={onRenoveHandler} onUserRemove={onUserRemove} onUserUpdate={onUserUpdate}/>
     </div>
     </>
     )

@@ -103,7 +103,7 @@ const onUserRemove=(id)=>{
     <div className={`container ${style.addUser}`}>
       <form onSubmit={onSubmitHandler}>
         <lable htmlFor="name">
-         Name
+         Title
         </lable>
           <input type="text" value={names} id="name" onChange={onNameChange}/>
         <lable htmlFor="notes">

@@ -18,7 +18,7 @@ const NewUser=(props)=>{
           <>
           <li key={item.id}>
           <h4 className={style.h4}>
-          Hi, {item.names}
+          {item.names}
           </h4>
           <h4>
           <span className={style.span}>

@@ -39,11 +39,11 @@ const AddUser=(props)=>{
     }
     //check name is not a blank
     if(names.trim().length == 0){
-      return props.showAlert("warning","⚠️ plese enter the Name :) ")
+      return props.showAlert("warning","⚠️ plese write your Name ✍️ :) ")
     }
     //check Msg in not blank
     if(userM.trim().length == 0){
-      return props.showAlert("warning","⚠️ please enter right pin code :) ")
+      return props.showAlert("warning","⚠️ please write Your Massage ✍️:) ")
     }
     //date function
 const date = new Date();
@@ -74,7 +74,7 @@ const date = new Date();
 //user Details send method 
    props.userList(getName)
 //alert method
-   props.showAlert("success","🏆 Your Data is successful Add")
+   props.showAlert("success","🏆 Your Data is successful Add 👏")
    //after send clear method 
     setNames('')
     setUserM('')

@@ -72,7 +72,7 @@ const onUpdatehandler=(event)=>{
  //user object get method 
  //console.log("list is",lists);
  setGetName([...getName,lists])
- props.showAlert("success","🏆 Your Data is successful Update 👏")
+ props.showAlert("success","🏆 Your current Notes is successful Update 👏")
  setUpdates(false)
  setNames('')
  setUserM('')
@@ -81,6 +81,7 @@ const onUpdatehandler=(event)=>{
  //user upadte method
 const onUserUpdate=(id)=>{
   setUpdates(true)
+  props.showAlert("success","🏆 Now it's Notes Updating time ✍️")
   const filterData = getName.filter((element,index)=>{
     return element.id == id
   })
@@ -97,7 +98,7 @@ const onUserUpdate=(id)=>{
   const datas = getName.filter((element,index)=>{
     return element.id !== id
   })
-  console.log("iid id is",id)
+  //console.log("iid id is",id)
   setGetName(datas)
  props.userList(getName)
  
@@ -149,7 +150,7 @@ const date = new Date();
 //user Details send method 
    props.userList(getName)
 //alert method
-   props.showAlert("success","🏆 Your Data is successful Add 👏")
+   props.showAlert("success","🏆 Your Notes is successful creates 👏")
    //after send clear method 
     setNames('')
     setUserM('')
@@ -163,6 +164,7 @@ const date = new Date();
 //All user remove method 
 const onRenoveHandler=()=>{
   setGetName([])
+  props.showAlert("success","📜 Your all Notes Successfully Deleted")
 }
 
 //only one user remove method
@@ -173,6 +175,7 @@ const onUserRemove=(id)=>{
   })
   //target user remove method
   setGetName(filterData)
+  props.showAlert("success","Your current 📜 Notes Successfully removed")
 }
 
 

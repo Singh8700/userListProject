@@ -11,6 +11,7 @@
 .success h4, .warning h4 {
   font-size: 1.5rem;
   text-shadow: none;
+  text-align: center;
 }
 
 .warning {
@@ -19,6 +20,7 @@
 
 .warning h4 {
   color: red;
+  text-align: center;
 }
 
 .bar {

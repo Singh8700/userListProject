@@ -35,10 +35,14 @@ const onPincodeChange=(event)=>{
 
   }
   
+
   //user Details upadte method 
 const onUpdatehandler=(event)=>{
   event.preventDefault();
   
+  if(names.trim().length === 0 && userM.trim().length === 0){
+      return props.showAlert("alert","🙅‍♂️All fields are Mandatory :) ")
+    }
   props.showAlert("warning","⏫ Update both fields ")
 
   if(names.length == 0 || names.trim().length == 0){
@@ -180,27 +184,25 @@ const onUserRemove=(id)=>{
   setGetName(filterData)
   props.showAlert("success","Your current 📜 Notes Successfully removed")
 }
-
+const resetHandler=(event)=>{
+  event.preventDefault();
+  if(updates){
+  setNames('')
+  setUserM('')
+  }
+  if(names.trim().length === 0 && userM.trim().length === 0){
+      return props.showAlert("alert",`🙅‍♂️No need to Reset
+     (Because Both fields are empty)`)
+    }
+  setNames('')
+  setUserM('')
+}
 
   return(
     <>
     <div className={`container ${style.addUser}`}>
     {(updates)?
-      <form onSubmit={onUpdatehandler}>
-        <lable htmlFor="name">
-         Title
-        </lable>
-          <input type="text" value={names} id="name" onChange={onNameChange} required/>
-        <lable htmlFor="notes">
-          Notes
-        </lable>
-          <textarea type="number" value={userM} id="pincode" onChange={onPincodeChange} rows="8" cols="30" required>
-          </textarea>
-          <button type="submit" className={`btn btn-primary`}>
-          Update Notes
-         </button>
-        </form>:
-      <form onSubmit={onSubmitHandler}>
+      <form onSubmit={onUpdatehandler} onReset={resetHandler}>
         <lable htmlFor="name">
          Title
         </lable>
@@ -210,9 +212,31 @@ const onUserRemove=(id)=>{
         </lable>
           <textarea type="number" value={userM} id="pincode" onChange={onPincodeChange} rows="8" cols="30">
           </textarea>
+          <button type="submit" className={`btn btn-primary`}>
+          Update Notes
+         </button>
+        <button type="reset" className={`btn btn-primary`}>
+          Reset
+         </button>
+        </form>:
+      <form onSubmit={onSubmitHandler} onReset={resetHandler}>
+        <lable htmlFor="name">
+         Title
+        </lable>
+          <input type="text" value={names} id="name" onChange={onNameChange}/>
+        <lable htmlFor="notes">
+          Notes
+        </lable>
+          <textarea type="number" value={userM} id="pincode" onChange={onPincodeChange} rows="8" cols="30">
+          </textarea>
+         {/*<div className={style.Btncontainer}>*/}
          <button type="submit" className={`btn btn-primary`}>
           Add Notes
          </button>
+         <button type="reset" className={`btn btn-primary`}>
+          Reset
+         </button>
+        {/* </div>*/}
       </form>}
       <NewUser updateUser={getName} onUserRemove={onUserRemove} onUserUpdate={onUserUpdate} checks={updates}/>
       <Header re={onRenoveHandler}/>

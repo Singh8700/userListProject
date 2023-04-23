@@ -206,7 +206,7 @@ const resetHandler=(event)=>{
         <lable htmlFor="name">
          Title
         </lable>
-          <input type="text" value={names} id="name" onChange={onNameChange}/>
+          <input type="text" value={names} id="name" onChange={onNameChange} autoComplete="off"/>
         <lable htmlFor="notes">
           Notes
         </lable>
@@ -223,7 +223,7 @@ const resetHandler=(event)=>{
         <lable htmlFor="name">
          Title
         </lable>
-          <input type="text" value={names} id="name" onChange={onNameChange}/>
+          <input type="text" value={names} id="name" onChange={onNameChange} autoComplete="off"/>
         <lable htmlFor="notes">
           Notes
         </lable>

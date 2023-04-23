@@ -191,7 +191,7 @@ const onUserRemove=(id)=>{
           <textarea type="number" value={userM} id="pincode" onChange={onPincodeChange} rows="8" cols="30">
           </textarea>
           <button type="submit" className={`btn btn-primary`}>
-          Update User
+          Update Notes
          </button>
         </form>:
       <form onSubmit={onSubmitHandler}>
@@ -205,7 +205,7 @@ const onUserRemove=(id)=>{
           <textarea type="number" value={userM} id="pincode" onChange={onPincodeChange} rows="8" cols="30">
           </textarea>
          <button type="submit" className={`btn btn-primary`}>
-          Add User
+          Add Notes
          </button>
       </form>}
       <NewUser updateUser={getName} onUserRemove={onUserRemove} onUserUpdate={onUserUpdate} checks={updates}/>

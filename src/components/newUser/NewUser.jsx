@@ -1,23 +1,38 @@
 
+import {useState, useEffect} from "react"
 import style from "./NewUser.module.css"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 const NewUser=(props)=>{
-
-
+ const [icon,setIcon] = useState("")
+ useEffect(()=>{
+   setTimeout(()=>{
+     if(props.checks){
+    return setIcon(<i class="fa-sharp fa-solid fa-folder-open"></i>)
+     }
+   }, 100);
+   setIcon("")
+ },[icon])
   return (
     <>
     {props.updateUser.length <= 0 ? <div>
       {(props.checks && props.updateUser.length <= 0)?
-      <h2>UpDating Notes... </h2>
+      <h2>UpDating Notes<br/>{icon}
+      </h2>
       :
-      <h2>Empty Notes Box</h2>
+      <h2>Empty Notes Box <br/>{icon}
+      
+      </h2>
       }
     </div>:
     <div className={`${style.cont}`}>
        {(props.checks)?
-       <h2>UpDating Notes...</h2>
+       <h2>UpDating Notes <br/>{icon}
+      
+       </h2>
        :
-        <h2>Our Notes</h2>
+        <h2>Our Notes <br/> {icon}
+
+        </h2>
        }
       <ul className={style.ul}>
       {

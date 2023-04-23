@@ -7,10 +7,18 @@ const NewUser=(props)=>{
   return (
     <>
     {props.updateUser.length <= 0 ? <div>
+      {(props.checks && props.updateUser.length <= 0)?
+      <h2>UpDating Notes... </h2>
+      :
       <h2>Empty Notes Box</h2>
+      }
     </div>:
     <div className={`${style.cont}`}>
-        <h2>Notes</h2>
+       {(props.checks)?
+       <h2>UpDating Notes...</h2>
+       :
+        <h2>Our Notes</h2>
+       }
       <ul className={style.ul}>
       {
         props.updateUser.map((item)=>{
@@ -22,11 +30,13 @@ const NewUser=(props)=>{
           </h4>
           <h4>
           <span className={style.span}>
-              Notes
+             My Notes
               <hr/>
           </span>
-          <br/> {item.userM} </h4><br/>
-          <h6 className={style.time}>
+          </h4>
+          <h4 className={style.textarea}>
+          <br/>{item.userM} </h4><br/>
+          <h6 className={style.date}>
             {item.dates}
           </h6>
           <h6 className={style.time}>{item.times}</h6>
@@ -46,7 +56,6 @@ const NewUser=(props)=>{
      }
     
       </ul>
-      <button type="submit" onClick={props.re} className={style.btn}>Remove All Data </button>
     </div>
     }
     </>

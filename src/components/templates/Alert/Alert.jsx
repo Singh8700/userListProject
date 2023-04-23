@@ -1,7 +1,7 @@
 
 import style from "./Alert.module.css"
 const Alert=(props)=>{
- // console.log(props.bg)
+ 
   return(
     <>
     {props.msg && <div

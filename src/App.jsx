@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react'
+import Copyright from "./components/copyright/Copyright"
 import AddUser from "./components/addUser/AddUser";
 import Alert from "./components/templates/Alert/Alert";
 import NewUser from "./components/newUser/NewUser";
+
 import style from "./Apps.module.css"
 
 
@@ -20,15 +22,16 @@ function App() {
   }
   const data=(sname)=>{
     return setUserList([...sname,sname])
-    
+   
   }
-  console.log(userList);
+  
   return (
     <div className={style.container}>
+    <Copyright/>
     <h1>Notes Manegement</h1>
     <Alert msg={alerts} bg={sta}/>
     <AddUser showAlert={showAlert} userList={data}/>
-  
+    
     </div>
   )
 }

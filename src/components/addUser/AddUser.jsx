@@ -2,6 +2,8 @@
 import {useState, useEffect} from "react";
 import style from "./AddUser.module.css";
 import NewUser from "../newUser/NewUser";
+import Header from "../header/Header"
+
 
 const getUserData = ()=>{
   let list = localStorage.getItem("userDetails")
@@ -206,7 +208,8 @@ const onUserRemove=(id)=>{
           Add User
          </button>
       </form>}
-      <NewUser updateUser={getName} re={onRenoveHandler} onUserRemove={onUserRemove} onUserUpdate={onUserUpdate}/>
+      <NewUser updateUser={getName} onUserRemove={onUserRemove} onUserUpdate={onUserUpdate} checks={updates}/>
+      <Header re={onRenoveHandler}/>
     </div>
     </>
     )

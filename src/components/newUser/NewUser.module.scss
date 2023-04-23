@@ -1,13 +1,12 @@
 .cont{
   width:100%;
-  margin: auto;
-  
+  margin: 0 auto 5rem;
+  font-family: Georgia;
 }
 
 .ul{
   width: 100%;
   padding: 2rem 1.5rem;
-  border-radius: 2rem;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -15,27 +14,25 @@
   list-style: none;
   li{
     width:350px;
+    height: 350px;
     color:#fff;
     margin: 1.2rem auto;
     padding: 0.5rem 1.2rem;
     border-radius: 2rem;
-    border: 1px solid #fff;
+    border: 1px solid #888;
     box-shadow: 2px 2px 4px #fff;
     position:relative;
     transition: all 0.2s linear;
-    h4{
-      
-      margin: 0.11rem 0;
-      font-size: 1.5rem;
-      text-shadow: none;
-      font-weight: 900;
-    }
+     h4,h6{
+       transition: all 0.2s linear;
+     }
     .h4{
       text-align: center;
       font-size: 2rem;
-      
+      text-shadow: none;
     }
     .span{
+      text-shadow: none;
       position: absolute;
       left:50%;
       transform: translateX(-50%);
@@ -50,9 +47,21 @@
     }
   }
   li:hover{
-    background: var(--color-bg);
+    background: linear-gradient(120deg,rgba(250,255,255,0.8),rgba(25,255,205,0.2));
+    border: 1px solid #fff;
     transform: scale(1.1);
     margin: 2rem auto;
+    /*color:#000;*/
+    .span{
+      color:#000;
+    }
+    h4,h6{
+      /*color:#000;*/
+      font-weight: 1000;
+    }
+    hr{
+      background: #000;
+    }
   }
 }
 .btn{
@@ -60,7 +69,7 @@
   justify-content: right;
   align-items: right;
   text-align: right;
-  margin: 1.2rem auto;
+  margin: 0.2rem auto;
   padding: 0.5rem;
   font-size: 1rem;
   border-radius: 0.7rem;
@@ -75,27 +84,45 @@
     margin-left: 1.5rem;
   }
 }
-.btn:hover{
-    background: #999;
-    box-shadow: 2px 2px 5px #aaa;
-  }
+
 @keyframes oneTime{
   from{margin-left: -100%;}
   to{margin-left: 0%;}
+}
+.date{
+  margin: -1.5rem 0 0.5rem;
 }
 .time{
   font-size: 0.8rem;
   font-weight: 1000;
   color:#ccc;
+  margin-top: -0.5rem;
 }
-
-
+.textarea{
+  height:180px;
+  overflow-x: hidden;
+   border: none;
+   outline: none;
+   resize: none;
+   font-size: 1rem;
+   margin-top: 2.2rem;
+   background-color: transparent;
+   white-space: pre-wrap;
+   word-wrap: break-word;
+   text-shadow: none;
+}
 /*media query*/
 @media (max-width: 900px){
+  
   ul{
     flex-direction: columns;
     li{
       width:100%;
+      height: 550px;
+    }
+    .textarea{
+      height: 180px;
+      font-size: 1.3rem;
     }
   }
 }

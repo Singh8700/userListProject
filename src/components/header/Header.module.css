@@ -1,0 +1,64 @@
+.container {
+  width: 90%;
+  margin: 2rem auto 0;
+  position: fixed;
+  left: 50%;
+  bottom: 0rem;
+  transform: translateX(-50%);
+  z-index: 99;
+  overflow: hidden;
+  border-radius: 1.5rem;
+  box-shadow: inset 2px 4px 10px #eee, inset -2px -4px 10px #000;
+  background: linear-gradient(45deg, #cdfacd, black);
+  background-attachment: fixed;
+  background-position: center center;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.title {
+  width: 100%;
+  margin: 0.5rem auto;
+  font-size: 2rem;
+}
+
+.btn {
+  display: flex;
+  justify-content: right;
+  align-items: right;
+  text-align: right;
+  margin: 0.2rem auto;
+  padding: 0.5rem;
+  font-size: 1rem;
+  font-weight: 1000;
+  color: #fff;
+  border-radius: 0.7rem;
+  position: relative;
+  background: transparent;
+  border-color: #aaa;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: inset 2px 4px 10px #eee, inset -2px -4px 10px #000;
+  transition: all 0.5s;
+  animation: oneTime 0.5s ease 1;
+}
+
+.btn span {
+  margin-left: 1.5rem;
+}
+
+.btn:hover {
+  color: #000;
+  font-weight: 2000;
+  border-color: #fff;
+}
+
+@keyframes oneTime {
+  from {
+    margin-left: -100%;
+  }
+  to {
+    margin-left: 0%;
+  }
+}

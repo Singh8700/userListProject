@@ -1,0 +1,28 @@
+.copyright {
+  width: 50%;
+  position: sticky;
+  left: -40%;
+  top: 80%;
+  transform: translateX(-40%) rotate(-90deg);
+  transition: 0.5s;
+  background: transparent;
+  z-index: 99;
+}
+
+.copyright h2 {
+  font-size: 0.8rem;
+  color: #fff;
+  font-weight: 2000;
+}
+
+@media (max-width: 900px) {
+  .copyright {
+    position: sticky;
+    left: -40%;
+    top: 70%;
+    transform: translate(-40%, -70%) rotate(-90deg);
+    transition: 0.5s;
+    background: transparent;
+    z-index: 999;
+  }
+}

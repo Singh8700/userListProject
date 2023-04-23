@@ -163,6 +163,9 @@ const date = new Date();
   
 //All user remove method 
 const onRenoveHandler=()=>{
+  if(getName.length <= 0){
+    return props.showAlert("warning", "⚠️ Please first add notes ☣️")
+  }
   setGetName([])
   props.showAlert("success","📜 Your all Notes Successfully Deleted")
 }
@@ -187,11 +190,11 @@ const onUserRemove=(id)=>{
         <lable htmlFor="name">
          Title
         </lable>
-          <input type="text" value={names} id="name" onChange={onNameChange}/>
+          <input type="text" value={names} id="name" onChange={onNameChange} required/>
         <lable htmlFor="notes">
           Notes
         </lable>
-          <textarea type="number" value={userM} id="pincode" onChange={onPincodeChange} rows="8" cols="30">
+          <textarea type="number" value={userM} id="pincode" onChange={onPincodeChange} rows="8" cols="30" required>
           </textarea>
           <button type="submit" className={`btn btn-primary`}>
           Update Notes

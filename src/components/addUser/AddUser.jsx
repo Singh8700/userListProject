@@ -143,7 +143,6 @@ const date = new Date();
    names,
    userM,
   id:Math.random().toString(),
-  id:Math.random().toString(),
   dates:dates,
   times:times
  }

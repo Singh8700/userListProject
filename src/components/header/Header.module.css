@@ -27,7 +27,8 @@
   display: flex;
   justify-content: right;
   align-items: right;
-  text-align: right;
+  text-align: center;
+  word-break: all;
   margin: 0.2rem auto;
   padding: 0.5rem;
   font-size: 1rem;
